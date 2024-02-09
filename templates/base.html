@@ -1,0 +1,75 @@
+{% load static %} 
+<!DOCTYPE html>
+<header>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Aquarium World</h1>
+        <div>
+            {% if request.user.is_authenticated %} 
+            <a style="color: green" href="/accounts/logout/">Logout</a>
+            {% else %}
+            <a style="color: green" href="/accounts/login/">Login</a>
+            <a style="color: green" href="/accounts/register/">Register</a>
+            {% endif %}
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <div><a href='/'>HOME</a></div>
+        </div>
+        <div>
+            <div><a href='articles/'>NEWS</a></div>
+        </div>
+        <div>
+            <div><a href='tutories/'>THE TUTORIES GUIDES</a></div>
+        </div>
+        <div>
+            <div><a href='gallery/'>PHOTO GALLERY</a></div>
+        </div>
+        <div>
+            <div><a href='contact/'>CONTACT US</a></div>
+        </div>
+        <div>
+            <div><a href='account/'>MY ACCOUNT</a></div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <div><a href='articles/news/'>News</a></div>
+        </div>
+        <div>
+            <div><a href='encyclopedia/fish/'>Encyclopedia of fish</a></div>
+        </div>
+       
+        <div>
+            <div><a href='article/freshwater_aquariums/'>Fresh water aquariums</a></div>
+        </div>
+        <div>
+            <div><a href='article/sea_aquarium/'>Sea aquariums</a></div>
+        </div>
+        <div>
+            <div><a href='article/water_ponds/'>Water ponds</a></div>
+        </div>
+        <div>
+            <div><a href='article/advices/'>Advices</a></div>
+        </div>
+    </div>
+</header>
+{% block content %}
+
+{% endblock %}
+<footer>
+    <div>
+        <p></p>
+    </div>
+    <div>
+        <h3>The latest articles</h3>
+    </div>
+    <div>
+        <h3>Photos of the users</h3>
+    </div>
+    <div>
+        <h3>The Newsletter</h3>
+    </div>
+    
+</footer>
+</html>

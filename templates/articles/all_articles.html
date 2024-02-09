@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %} 
+
+<div id="article_cont">
+    <h2 color="green">New articles</h2>
+    {% for article in articles %}
+    <div style="display:flex; border: 3px solid green; margin: 25px 0 25px 0;" data-article-id='{{ article.id }}'>
+        <img src='{{ article.main_photo.url }}' alt="main image">
+        <h3>{{ article.title }}</h3>
+        <p>{{ article.text_part|truncatechars:300 }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+
+<script type="text/javascript">
+const article_cont = document.getElementById('article_cont');
+const articles_btn = article_cont.querySelectorAll("[data-article-id]");
+articles_btn.forEach((btn) => {
+    btn.style.cursor = "pointer"
+    btn.addEventListener("click", () => {
+        window.location.href = `/articles/${btn.dataset.articleId}`
+    })
+})
+console.log(article_cont)
+</script>
+
+{% endblock %}
+

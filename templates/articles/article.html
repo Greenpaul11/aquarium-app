@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %} 
+<div>
+    <div style="border: 2px solid yellow;">
+        <h3>{{ article.title }}</h3>
+        <img src="{{ article.main_photo.url }}">
+        <h3>{{ article.bold_text }}</h3>
+        <p>{{ article.text_part }}</p>
+    </div>
+    <div style="border: 2px solid blue;">
+        <h4>Comments {{ comments|length }}</h4>
+        {% for comment in comments %}
+        <div style="display:flex; border: 2px solid orange;">
+            <p><b>{{ comment.user }}</b></p>
+            <p><small>{{ comment.created }}</small></p>
+            <p>{{ comment }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="border: 2px solid purple">
+        <h4>ADD YOUR COMMENT</h4>
+        <form method="POST">
+        {% csrf_token %}
+            {{ form.as_p }}
+            {% if request.user.is_authenticated %}
+            <button type="submit">Add comment</button>
+            {% else %}
+            <button type="submit" disabled="true">Add comment</button>
+            {% endif %}
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}
